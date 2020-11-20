@@ -1,0 +1,77 @@
+<div class="l-cs">
+
+	<main role="main">
+
+		{% if order == true %}
+
+			{% if status != 'failed' %}
+
+				<h1 class="main__header">
+
+					Dziękujemy za zamówienie! Jego numer to:
+					{{ ordernumber }}
+
+				</h1>
+
+				<div class="main__content">
+
+					<p>Będziemy informować o jego statusie na adres
+						{{ email }}.</p>
+
+					<div class="l-container">
+
+						<div class="l-g4">
+
+
+							{% do action( 'woocommerce_thankyou_' . payment_method, order_id ) %}
+							{% do action( 'woocommerce_thankyou', order_id ) %}
+
+						</div>
+
+					</div>
+
+				</div>
+
+			{% else %}
+
+				<h1 class="main__header">
+
+					Coś poszło nie tak.
+
+				</h1>
+
+				<div class="main__content">
+
+					<p>Coś poszło nie tak podczas płacenia za zamówienie. Spróbuj ponownie.</p>
+
+					<p>
+
+						<a href="{{ payment_url }}" title="Zapłać ponownie" class="btn btn--primary">
+							Zapłać ponownie
+						</a>
+
+					</p>
+
+				</div>
+
+			{% endif %}
+
+		{% else %}
+
+			<h1 class="main__header">
+
+				Bedankt voor je bestelling!
+
+			</h1>
+
+			<div class="main__content">
+
+				<p>We hebben je bestelling ontvangen.</p>
+
+			</div>
+
+		{% endif %}
+
+	</main>
+
+</div>

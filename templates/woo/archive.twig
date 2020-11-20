@@ -1,0 +1,31 @@
+{% extends 'base.twig' %}
+{% set body_class = 'shop-page' %}
+
+{% block main %}
+	<section class="hero" {% if thumbnail %} style="background-image: url('{{ Image(thumbnail).src }}')" {% endif %}>
+		<div class="hero__inner">
+			<div class="hero__title-col">
+				<h1 class="hero__title">{{ title ? title : 'Sklep' }}</h1>
+			</div>
+		</div>
+	</section>
+
+	<section class="content">
+		<div class="content__inner">
+
+			<div class="content__head">
+				{% do action('woocommerce_before_main_content') %}
+				{% do action('woocommerce_before_shop_loop') %}
+			</div>
+			<div class="content__products">
+				{% for post in products %}
+					{% include ["partials/tease-product.twig"] %}
+				{% endfor %}
+			</div>
+
+			{% do action('woocommerce_after_shop_loop') %}
+			{% do action('woocommerce_after_main_content') %}
+		</div>
+	</section>
+
+{% endblock  %}

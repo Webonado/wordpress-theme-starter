@@ -1,0 +1,10 @@
+{% extends "base.twig" %}
+{% set body_class = 'shop-checkout-page' %}
+
+{% block main %}
+	<section>
+		{% filter shortcodes %}
+			[woocommerce_checkout]
+		{% endfilter %}
+	</section>
+{% endblock %}

@@ -1,0 +1,115 @@
+<div class="l-cs">
+
+		<main role="main">
+
+			<h1 class="main__header">
+
+				{{ post.title }}
+
+			</h1>
+
+			<div class="main__content">
+
+				{% do action( 'woocommerce_before_cart' ) %}
+
+				<form class="woocommerce-cart-form" action="{{ action }}" method="post">
+
+					{% do action( 'woocommerce_before_cart_table' ) %}
+
+					<table class="shop_table shop_table_responsive cart woocommerce-cart-form__contents" cellspacing="0">
+
+						<thead>
+
+							<tr>
+								<th></th>
+								<th class="product-name">Produkt</th>
+								<th class="product-price text--right">Cena</th>
+								<th class="product-quantity">Ilość</th>
+								<th class="product-subtotal text--right">Suma</th>
+							</tr>
+
+						</thead>
+
+						<tbody>
+
+							{% do action( 'woocommerce_before_cart_contents' ) %}
+
+							{% for product in  products%}
+
+								<tr>
+
+									<td data-title="Usuń">
+									<a href="{{ product.delete_permalink }}" class="remove btn cart-action" aria-label="Usuń produt" data-product_id="{{ product.delete_productid }}" data-product_sku="{{ product.delete_sku }}">X</a>
+									</td>
+
+									<td data-title="Produkt">
+										<a href="{{ product.url }}" title="Direct naar {{ product.title }}">
+											<strong>{{ product.title }}</strong>
+										</a>
+									</td>
+
+									<td class="text--right" data-title="Cena">
+										{{ product.price }}
+									</td>
+
+									<td data-title="Ilość">
+										{{ product.quantity }}
+
+	
+
+									</td>
+
+									<td class="text--right" data-title="Suma">
+										{{ product.total }}
+									</td>
+
+								</tr>
+
+							{% endfor %}
+
+							{% do action( 'woocommerce_cart_contents' ) %}
+
+							<tr>
+
+								<td colspan="6" class="actions">
+
+									{% do action( 'woocommerce_cart_actions' ) %}
+
+										<button type="submit" class="btn cart-action" name="update_cart" title="Zaktualizuj koszyk">Zaktualizuj koszyk</button>
+
+									{{ nonce }}
+
+								</td>
+
+							</tr>
+
+							{% do action( 'woocommerce_after_cart_contents' ) %}
+
+						</tbody>
+						
+
+					</table>
+
+					{% do action( 'woocommerce_after_cart_table' ) %}
+
+				</form>
+
+			</div>
+
+		</main>
+
+		<aside role="complementary" class="sidebar">
+
+			{% do action( 'woocommerce_cart_collaterals' ) %}
+
+		</aside>
+
+		{% do action( 'woocommerce_after_cart' ) %}
+
+		<script>
+			setTimeout(function() {
+				jQuery('.woocommerce-cart-form').find('button[name="update_cart"]').removeAttr( 'disabled' );
+			}, 500);
+		</script>
+
+	</div>

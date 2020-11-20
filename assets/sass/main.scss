@@ -1,0 +1,48 @@
+// packages style
+// @import "../node_modules/slick-carousel/slick/slick";
+
+// common
+@import "common/_normalize";
+@import "common/_fonts";
+@import "common/_variables";
+@import "common/_mixins";
+@import "common/_animations";
+
+// components
+@import "components/_btn";
+@import "components/_section-heading";
+@import "components/_header";
+@import "components/_footer";
+@import "components/_modal";
+
+// pages
+@import "pages/_home.scss";
+@import "pages/_single.scss";
+@import "pages/_shop.scss";
+@import "pages/_shop-single.scss";
+@import "pages/_shop-checkout.scss";
+@import "pages/_shop-cart.scss";
+@import "pages/_404.scss";
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: white;
+  color: #000000;
+  font-family: $font-primary;
+}
+
+main {
+  overflow: hidden;
+}
+
+p {
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 1.67;
+  color: rgb(0, 0, 0);
+  margin-top: 0;
+  margin-bottom: 15px;
+}

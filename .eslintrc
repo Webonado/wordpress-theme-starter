@@ -1,0 +1,24 @@
+{
+  "rules": {
+    "indent": ["error", 2],
+    "import/default": 0,
+    "import/export": 0,
+    "quotes": ["error", "single", { "avoidEscape": false }],
+    "quote-props": ["error", "as-needed"],
+    "no-use-before-define": 0,
+    "no-multiple-empty-lines": ["error", { "max": 1, "maxEOF": 1 }],
+    "object-curly-spacing": ["error", "always"],
+    "semi": ["error"],
+    "react/prop-types": 0,
+    "react/display-name": 0,
+    "comma-spacing": ["error", { "before": false, "after": true }],
+    "no-empty-pattern": 0,
+    "no-extra-semi": 0,
+    "react/react-in-jsx-scope": 0,
+    "newline-before-return": 1
+  },
+  "parserOptions": {
+    "ecmaVersion": 8,
+    "sourceType": "module"
+  }
+}

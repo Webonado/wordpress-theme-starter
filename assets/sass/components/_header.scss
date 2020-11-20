@@ -1,0 +1,48 @@
+.header {
+  position: absolute;
+  z-index: 9;
+  width: 100%;
+  display: block;
+  padding-top: 30px;
+  padding-bottom: 30px;
+
+  &__inner {
+    @include container;
+  }
+
+  &__logo-link {
+    display: inline-block;
+    text-decoration: none;
+
+    @include breakpoint(md) {
+      margin-bottom: 30px;
+    }
+        
+    @include breakpoint(sm) {
+      margin-bottom: 0;
+    } 
+  }
+
+  &__logo {
+    display: inline-block;
+  }
+
+  &__menu {
+
+    @include breakpoint(sm) {
+      display: none;
+    } 
+  }
+
+  &__menu-item {
+    display: inline-block;
+  }
+
+  &__menu-link {
+    display: inline-block;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}

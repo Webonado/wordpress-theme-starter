@@ -1,0 +1,11 @@
+{% extends "base.twig" %}
+{% set body_class = 'shop-cart-page' %}
+
+{% block main %}
+	<section>
+		{% filter shortcodes %}
+			[woocommerce_cart]
+		{% endfilter %}
+	</section>
+
+{% endblock %}

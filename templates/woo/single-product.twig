@@ -1,0 +1,40 @@
+{% extends "base.twig" %}
+{% set body_class = 'shop-single-page' %}
+
+{% block main %}
+	<section class="hero" {% if thumbnail %} style="background-image: url('{{ Image(thumbnail).src }}')" {% endif %}>
+		<div class="hero__inner">
+			<div class="hero__title-col">
+				<h1 class="hero__title">{{ post.title }}</h1>
+			</div>
+		</div>
+	</section>
+
+	<section class="product">
+		<div class="product__inner">
+			<div class="product__col">
+				{% do action('woocommerce_before_single_product') %}
+				
+				<div class="product__gallery">
+					{% do action('woocommerce_before_single_product_summary') %}
+				</div>
+				
+				{# <img class="product__img" src="{{ Image(post.thumbnail.src('shop_single')).src }}"/> #}
+
+				<div class="product__summary">
+					{% do action('woocommerce_single_product_summary') %}
+				</div>
+
+				<div class="product__after-summary">
+					{% do action('woocommerce_after_single_product_summary') %}
+				</div>
+
+				<meta itemprop="url" content="{{ post.link }}"/>
+
+				{# {% include ["partials/tease-product.twig"] with { products: related_products } %} #}
+
+				{% do action('woocommerce_after_single_product') %}
+			</div>
+		</div>
+	</section>
+{% endblock  %}
